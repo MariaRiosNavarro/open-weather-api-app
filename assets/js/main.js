@@ -1,9 +1,11 @@
+import { api_key } from "../../config";
+
 const cityInput = document.querySelector('[data-js="city"]');
 const searchButton = document.querySelector('[data-js="search"]');
 
 searchButton.addEventListener("click", () => {
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput.value}&limit=5&appid=a210fd9e00bee0d760dcfd2fc1cb1ef5`
+    `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput.value}&limit=5&appid=${api_key}`
   )
     .then((response) => response.json())
     .then((data) => {
