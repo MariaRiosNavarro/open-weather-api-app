@@ -1,4 +1,5 @@
 import { api_key } from "/config.js";
+import { countries } from "../db/countries";
 
 const cityInput = document.querySelector('[data-js="city"]');
 const searchButton = document.querySelector('[data-js="search"]');
@@ -58,7 +59,6 @@ searchButton.addEventListener("click", () => {
             // -1.1 Bubble (Weather Wrapper)
             const weatherWrapper = document.createElement("div");
             weatherWrapper.classList.add("weather-wrapper", "drop", "drop-one");
-
             const temp = document.createElement("h2");
             temp.classList.add("card-temp");
             const minMaxCard = document.createElement("div");
@@ -68,41 +68,28 @@ searchButton.addEventListener("click", () => {
             const tempMax = document.createElement("span");
             const description = document.createElement("div");
             description.classList.add("card-description");
-
-            // Anexar elementos al Bubble (Weather Wrapper)
             minMaxCard.appendChild(tempMin);
             minMaxCard.appendChild(separationSpan);
             minMaxCard.appendChild(tempMax);
             weatherWrapper.appendChild(temp);
             weatherWrapper.appendChild(minMaxCard);
             weatherWrapper.appendChild(description);
-
-            // Anexar el Bubble (Weather Wrapper) al Bubble (Weather)
             subcardUP.appendChild(weatherWrapper);
 
             // -1.2 Bubble (Location & Time)
             const timeWrapper = document.createElement("div");
             timeWrapper.classList.add("time-wrapper", "drop", "drop-two");
-
             const cardCountry = document.createElement("h4");
             cardCountry.classList.add("card-country");
             const time = document.createElement("h3");
             time.classList.add("card-time");
             const timeBlockSpan = document.createElement("span");
             timeBlockSpan.classList.add("block-span", "time");
-
-            // Anexar elementos al Bubble (Location & Time)
-
             time.innerHTML = "Local Time: ";
             time.appendChild(timeBlockSpan);
-
             timeWrapper.appendChild(cardCountry);
             timeWrapper.appendChild(time);
-
-            // Anexar el Bubble (Location & Time) al Bubble (Weather)
             subcardUP.appendChild(timeWrapper);
-
-            // Anexar el Bubble (Weather) al card principal
             card.appendChild(subcardUP);
 
             // -2 Bubble (Middle)
@@ -114,14 +101,8 @@ searchButton.addEventListener("click", () => {
             imageWrapper.classList.add("image-wrapper", "drop-three");
             const cardIcon = document.createElement("img");
             cardIcon.classList.add("image");
-
-            // Anexar elementos al Bubble (Image Wrapper)
             imageWrapper.appendChild(cardIcon);
-
-            // Anexar el Bubble (Image Wrapper) al Bubble (Middle)
             subcardMiddle.appendChild(imageWrapper);
-
-            // Anexar el Bubble (Middle) al card principal
             card.appendChild(subcardMiddle);
 
             // -3 Bubble (Down)
@@ -139,8 +120,6 @@ searchButton.addEventListener("click", () => {
             const sunsetBlockSpan = document.createElement("span");
             sunriseBlockSpan.classList.add("sunrise", "block-span");
             sunsetBlockSpan.classList.add("sunset", "block-span");
-
-            // Anexar elementos al Bubble (Sunrise & Sunset)
             litleWrapperOne.appendChild(sunrise);
             litleWrapperOne.appendChild(sunset);
             sunrise.appendChild(sunriseBlockSpan);
@@ -157,8 +136,6 @@ searchButton.addEventListener("click", () => {
             const humidityBlockSpan = document.createElement("span");
             cloudsBlockSpan.classList.add("clouds", "block-span");
             humidityBlockSpan.classList.add("humidity", "block-span");
-
-            // Anexar elementos al Bubble (Clouds & Humidity)
             litleWrapperTwo.appendChild(clouds);
             litleWrapperTwo.appendChild(humidity);
             clouds.appendChild(cloudsBlockSpan);
@@ -179,22 +156,16 @@ searchButton.addEventListener("click", () => {
             const windSpeedBlockSpan = document.createElement("span");
             pressureBlockSpan.classList.add("pressure", "block-span");
             windSpeedBlockSpan.classList.add("wind-speed", "block-span");
-
-            // Anexar elementos al Bubble (Pressure & Wind Speed)
             litleWrapperThree.appendChild(pressure);
             litleWrapperThree.appendChild(windSpeed);
             pressure.appendChild(pressureBlockSpan);
             windSpeed.appendChild(windSpeedBlockSpan);
-
-            // Anexar todos los Bubbles (Sunrise & Sunset, Clouds & Humidity, Pressure & Wind Speed) al Bubble (Down)
             subcardDown.appendChild(litleWrapperOne);
             subcardDown.appendChild(litleWrapperTwo);
             subcardDown.appendChild(litleWrapperThree);
-
-            // Anexar el Bubble (Down) al card principal
             card.appendChild(subcardDown);
 
-            // Dados de contenido a los elementos
+            // !!CONTENT
             cardTitle.textContent = city.name;
             geoCoords.textContent = `${lat}/${lon}`;
             temp.textContent = `${cityWeather.main.temp.toFixed(1)}°`;
