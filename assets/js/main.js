@@ -27,7 +27,7 @@ searchButton.addEventListener("click", () => {
 
         // With the lat und lon we have all the information (&units=metric) for Celsius
         fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${api_key}`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${myKey}`
         )
           .then((response) => response.json())
           .then((weatherData) => {
