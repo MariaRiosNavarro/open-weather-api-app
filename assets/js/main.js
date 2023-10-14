@@ -222,7 +222,7 @@ searchButton.addEventListener("click", () => {
 
             //
 
-            cityInput.reset();
+            cityInput.value = "";
             cityInput.focus();
           })
           .catch((error) => {
