@@ -8,14 +8,64 @@
     <title>Document</title>
   </head>
   <body>
-    <header></header>
-    <main>
-      <section>
-        <input type="text" placeholder="city name" data-js="city" />
-        <input type="button" value="search" data-js="search" />
-      </section>
-      <div data-js="output"></div>
-    </main>
-    <footer></footer>
+    <div class="wrapper">
+      <header><h1>Weather now</h1></header>
+      <main>
+        <section data-js="output"></section>
+        <!----- header -->
+        <article class="card-header">
+          <h2 class="card-title">Barcelona</h2>
+          <p class="card-coords">50.3434 / 12.3434</p>
+        </article>
+        <!---- card -->
+        <article class="card">
+          <!-- !up -->
+          <div class="subcard-up">
+            <!-- --temp -->
+            <div class="weather-wrapper drop drop-one">
+              <h2 class="card-temp">24°</h2>
+              <div class="min-max-card"><span>13°</span>-<span>23°</span></div>
+              <div class="card-description">Sunny and Wolky</div>
+            </div>
+            <!-- --loc&time -->
+            <div class="time-wrapper drop drop-two">
+              <h4 class="card-country">Spain</h4>
+              <h3 class="card-time">
+                Local Time: <span class="block-span">21:00</span>
+              </h3>
+            </div>
+          </div>
+          <!-- !middle -->
+          <div class="subcard-middle">
+            <div class="image-wrapper drop-three">
+              <img class="image" src="https://picsum.photos/100/100" alt="" />
+            </div>
+          </div>
+          <!-- !down -->
+          <div class="subcard-down">
+            <div class="litle-wrapper drop drop-four">
+              <h4>sunrise <span class="sunrise block-span">19:00</span></h4>
+              <h4>sunset <span class="sunset block-span">07:00</span></h4>
+            </div>
+            <div class="litle-wrapper drop drop-five">
+              <h4>clouds <span class="clouds block-span">0</span></h4>
+              <h4>humidity <span class="humidity block-span">94</span></h4>
+            </div>
+            <div class="litle-wrapper drop drop-six">
+              <h4>Pressure <span class="pressure block-span">999</span></h4>
+              <h4>
+                Wind speed <span class="wind-speed block-span">5.81</span>
+              </h4>
+            </div>
+          </div>
+        </article>
+      </main>
+      <footer>
+        <div class="input-section">
+          <input type="text" placeholder="city name" data-js="city" />
+          <input type="button" value="search" data-js="search" />
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

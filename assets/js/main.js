@@ -42,13 +42,20 @@ searchButton.addEventListener("click", () => {
             // Create the DOM HERE
 
             const card = document.createElement("article");
+
+            // Header with 2 wrappers
             const cardHeader = document.createElement("div");
+            const cardHeaderImgWrapper = document.querySelector("div");
+            const cardIcon = document.createElement("img");
+
+            const cardHeaderTextWrapper = document.querySelector("div");
             const cardTitle = document.createElement("h2");
             const cardCountry = document.createElement("span");
             const temp = document.createElement("h2");
             const description = document.createElement("h3");
-            const time = document.createElement("time");
+            const time = document.createElement("h3");
 
+            // Other
             // Temps
             const tempWrapper = document.createElement("div");
             const tempMax = document.createElement("h3");
@@ -64,7 +71,15 @@ searchButton.addEventListener("click", () => {
 
             // Conect/Append all elements with each other
 
-            cardHeader.append(cardTitle, cardCountry, temp, time, description);
+            cardHeaderImgWrapper.append(cardIcon);
+            cardHeaderTextWrapper.append(
+              cardTitle,
+              cardCountry,
+              temp,
+              time,
+              description
+            );
+            cardHeader.append(cardHeaderImgWrapper, cardHeaderTextWrapper);
             tempWrapper.append(tempMax, tempMin);
             infoWrapper.append(pressure, humidity);
             geoCoords.append(sunrise, sunset);
@@ -85,6 +100,7 @@ searchButton.addEventListener("click", () => {
             geoCoords.textContent = `${lat}/${lon}`;
             sunrise.textContent = cityWeather.sys.sunrise;
             sunset.textContent = cityWeather.sys.sunset;
+            card.src = `https://openweathermap.org/img/wn/${cityWeather.weather[0].icon}@2x.png`;
           })
           .catch((error) => {
             console.error("Error Message", error);
@@ -95,3 +111,20 @@ searchButton.addEventListener("click", () => {
       console.error("Error Message", error);
     });
 });
+
+// Stylehttps://sarcadass.github.io/granim.js/examples.html
+
+// let granimInstance = new Granim({
+//   element: "#canvas-basic",
+//   direction: "top-bottom",
+//   isPausedWhenNotInView: true,
+//   states: {
+//     "default-state": {
+//       gradients: [
+//         ["#ff9966", "#ff5e62"],
+//         ["#00F260", "#0575E6"],
+//         ["#e1eec3", "#f05053"],
+//       ],
+//     },
+//   },
+// });
