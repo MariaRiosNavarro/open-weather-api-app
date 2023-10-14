@@ -83,6 +83,8 @@ input[type="button"] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 1rem;
+  padding-bottom: 1rem;
 }
 
 .card-title {
@@ -91,6 +93,11 @@ input[type="button"] {
   text-align: center;
   color: var(--extradarkcolor);
   margin: 0;
+}
+
+.card-coords {
+  font-size: 0.8rem;
+  font-weight: 400;
 }
 
 .card {
@@ -139,7 +146,7 @@ input[type="button"] {
 }
 
 .min-max-card {
-  font-size: 0.7rem;
+  font-size: 1rem;
   text-align: center;
 }
 
@@ -171,16 +178,17 @@ input[type="button"] {
   margin: 0;
 }
 
-.card-coords {
-  font-size: 0.5rem;
-  font-weight: 600;
-}
-
 .card-time {
   padding-top: 0.3rem;
   text-align: center;
   font-size: 0.7rem;
+  font-weight: 500;
 }
+
+.time {
+  font-size: 1.5rem;
+}
+
 /* -------------------------------Middle */
 .subcard-middle {
   display: flex;
@@ -224,7 +232,7 @@ input[type="button"] {
 
 /* * ------------------------3 - bubble - wind/pressure*/
 
-.litle-wrapper:last-of-type {
+.drop-six {
   position: relative;
   top: -2.7rem;
   left: -0.5rem;
@@ -234,7 +242,7 @@ input[type="button"] {
 
 /* * ------------------------4 - bubble - humidity/clouds*/
 
-.litle-wrapper:nth-of-type(2) {
+.drop-five {
   position: relative;
   top: 0.9rem;
   left: 0rem;
@@ -244,7 +252,7 @@ input[type="button"] {
 
 /* * ------------------------5 - bubble - sunrise/sunset*/
 
-.litle-wrapper:first-of-type {
+.drop-four {
   position: relative;
   top: -3.1rem;
   left: 1.4rem;
