@@ -110,6 +110,7 @@ input[type="button"] {
   border-radius: 50%;
   height: 21rem;
   width: 21rem;
+  margin-bottom: 2rem;
 }
 /* -------------------------------UP */
 .subcard-up {
@@ -314,12 +315,6 @@ div {
 }
 
 /* inputs */
-
-footer {
-  position: absolute;
-  bottom: 2rem;
-  text-align: center;
-}
 
 .input-section {
   display: flex;

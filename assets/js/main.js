@@ -1,5 +1,5 @@
 import { api_key } from "/config.js";
-import { countries } from "../db/countries";
+import { countries } from "/assets/db/countries.js";
 
 const cityInput = document.querySelector('[data-js="city"]');
 const searchButton = document.querySelector('[data-js="search"]');
@@ -77,6 +77,14 @@ searchButton.addEventListener("click", () => {
             subcardUP.appendChild(weatherWrapper);
 
             // -1.2 Bubble (Location & Time)
+            // Extract name of Country with the countries array
+
+            let countryName = "";
+            let countryCode = city.country;
+            countries.forEach((country) =>
+              country.code === countryCode ? (countryName = country.name) : ""
+            );
+
             const timeWrapper = document.createElement("div");
             timeWrapper.classList.add("time-wrapper", "drop", "drop-two");
             const cardCountry = document.createElement("h4");
@@ -167,13 +175,13 @@ searchButton.addEventListener("click", () => {
 
             // !!CONTENT
             cardTitle.textContent = city.name;
-            geoCoords.textContent = `${lat}/${lon}`;
+            geoCoords.textContent = `${lat.toFixed(2)}/${lon.toFixed(2)}`;
             temp.textContent = `${cityWeather.main.temp.toFixed(1)}°`;
             tempMin.textContent = `${cityWeather.main.temp_min.toFixed(1)}°`;
             separationSpan.textContent = "-";
             tempMax.textContent = `${cityWeather.main.temp_max.toFixed(1)}°`;
             description.textContent = cityWeather.weather[0].description; //we use only the first description, if there more as 1;
-            cardCountry.textContent = city.country;
+            cardCountry.textContent = countryName;
             const timestamp = cityWeather.dt;
             // time calculation
             const localTime = new Date(timestamp * 1000);
@@ -204,15 +212,18 @@ searchButton.addEventListener("click", () => {
               sunsetMinutes
             ).padStart(2, "0")}`; //Allways 2 numbers in minutes
             sunsetBlockSpan.textContent = `${formattedSunset}`;
-            //
             cloudsBlockSpan.textContent = `${cityWeather.clouds.all}`;
             humidityBlockSpan.textContent = `${cityWeather.main.humidity}`;
             pressureBlockSpan.textContent = `${cityWeather.main.pressure}`;
             windSpeedBlockSpan.textContent = `${cityWeather.wind.speed}`;
-
-            // Anexar el card principal al elemento "output"
+            // ADD to main Output
             output.appendChild(cardHeader);
             output.appendChild(card);
+
+            //
+
+            cityInput.reset();
+            cityInput.focus();
           })
           .catch((error) => {
             console.error("Error Message", error);
