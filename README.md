@@ -1,3 +1,5 @@
 # open-weather-api-app
 
-test
+[deploymentGitPages](https://mariariosnavarro.github.io/open-weather-api-app/)
+
+[deploymentNetlify](https://hilarious-torte-907ffb.netlify.app/)
