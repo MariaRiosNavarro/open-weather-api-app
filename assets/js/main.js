@@ -1,6 +1,8 @@
 import { api_key } from "/config.js";
 import { countries } from "/assets/db/countries.js";
 
+let myKey = api_key;
+
 const cityInput = document.querySelector('[data-js="city"]');
 const searchButton = document.querySelector('[data-js="search"]');
 const output = document.querySelector('[data-js="output"]');
@@ -10,7 +12,7 @@ const output = document.querySelector('[data-js="output"]');
 searchButton.addEventListener("click", () => {
   // Fetch the Place (Default Germany)
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput.value}&limit=5&appid=${api_key}`
+    `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput.value}&limit=5&appid=${myKey}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -68,6 +70,7 @@ searchButton.addEventListener("click", () => {
             const tempMax = document.createElement("span");
             const description = document.createElement("div");
             description.classList.add("card-description");
+            // appendChild
             minMaxCard.appendChild(tempMin);
             minMaxCard.appendChild(separationSpan);
             minMaxCard.appendChild(tempMax);
@@ -94,6 +97,7 @@ searchButton.addEventListener("click", () => {
             const timeBlockSpan = document.createElement("span");
             timeBlockSpan.classList.add("block-span", "time");
             time.innerHTML = "Local Time: ";
+            // appendChild
             time.appendChild(timeBlockSpan);
             timeWrapper.appendChild(cardCountry);
             timeWrapper.appendChild(time);
@@ -108,6 +112,7 @@ searchButton.addEventListener("click", () => {
             const imageWrapper = document.createElement("div");
             imageWrapper.classList.add("image-wrapper", "drop-three");
             const cardIcon = document.createElement("img");
+            // appendChild
             cardIcon.classList.add("image");
             imageWrapper.appendChild(cardIcon);
             subcardMiddle.appendChild(imageWrapper);
@@ -126,6 +131,7 @@ searchButton.addEventListener("click", () => {
             sunset.innerHTML = "Sunset:";
             const sunriseBlockSpan = document.createElement("span");
             const sunsetBlockSpan = document.createElement("span");
+            // appendChild
             sunriseBlockSpan.classList.add("sunrise", "block-span");
             sunsetBlockSpan.classList.add("sunset", "block-span");
             litleWrapperOne.appendChild(sunrise);
@@ -142,6 +148,7 @@ searchButton.addEventListener("click", () => {
             humidity.innerHTML = "Humidity:";
             const cloudsBlockSpan = document.createElement("span");
             const humidityBlockSpan = document.createElement("span");
+            // appendChild
             cloudsBlockSpan.classList.add("clouds", "block-span");
             humidityBlockSpan.classList.add("humidity", "block-span");
             litleWrapperTwo.appendChild(clouds);
@@ -164,6 +171,7 @@ searchButton.addEventListener("click", () => {
             const windSpeedBlockSpan = document.createElement("span");
             pressureBlockSpan.classList.add("pressure", "block-span");
             windSpeedBlockSpan.classList.add("wind-speed", "block-span");
+            // appendChild
             litleWrapperThree.appendChild(pressure);
             litleWrapperThree.appendChild(windSpeed);
             pressure.appendChild(pressureBlockSpan);
@@ -212,15 +220,17 @@ searchButton.addEventListener("click", () => {
               sunsetMinutes
             ).padStart(2, "0")}`; //Allways 2 numbers in minutes
             sunsetBlockSpan.textContent = `${formattedSunset}`;
-            cloudsBlockSpan.textContent = `${cityWeather.clouds.all}`;
-            humidityBlockSpan.textContent = `${cityWeather.main.humidity}`;
-            pressureBlockSpan.textContent = `${cityWeather.main.pressure}`;
-            windSpeedBlockSpan.textContent = `${cityWeather.wind.speed}`;
+            cloudsBlockSpan.textContent = `${cityWeather.clouds.all} %`;
+            humidityBlockSpan.textContent = `${cityWeather.main.humidity} %`;
+            pressureBlockSpan.textContent = `${cityWeather.main.pressure} hPa`;
+            let windSpeedMS = cityWeather.wind.speed;
+            let windSpeedKMH = Math.ceil(windSpeedMS * 3.6);
+            windSpeedBlockSpan.textContent = `${windSpeedKMH} km/h`;
             // ADD to main Output
             output.appendChild(cardHeader);
             output.appendChild(card);
 
-            //
+            //Remove old input & place the focus inside for the next search
 
             cityInput.value = "";
             cityInput.focus();
