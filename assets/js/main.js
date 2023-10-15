@@ -253,36 +253,29 @@ searchButton.addEventListener("click", () => {
 });
 
 searchButton.addEventListener("click", () => {
-  // Fetch the Place
+  // #1------------Fetch the Place
   fetch(
     `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput.value}&limit=5&appid=a210fd9e00bee0d760dcfd2fc1cb1ef5`
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log("firstdata--------------->", data);
       let cities = data;
-      //   Extract the lat und long for the next Fetch
-      //  If there are more citys with the same name (for example Berlin), we will display the Information for all
-
+      //   Extract the lat und long for the last Fetch. If there are more citys with the same name (for example Berlin), we will display the Information for all
       cities.forEach((city) => {
         let lat = city.lat;
         let lon = city.lon;
 
-        // # ------------- Fetch time
-
-        let dateTimeUnix = "";
+        // #2 ------------- Fetch Local Time
 
         fetch(
           `https://api.ipgeolocation.io/timezone?apiKey=c1d3911fd8fd46cfaf206b0d62245051&lat=${lat}&long=${lon}`
         )
           .then((response) => response.json())
           .then((timeData) => {
-            console.log(timeData);
-            // dateTimeUnix = timeData.date_time_unix;
             let localTime = timeData.time_24;
             const localWithOutSeconds = localTime.slice(0, -3);
 
-            // # -----Fetch weather
+            // #3 --------------------Fetch weather
             // With the lat und lon we have all the information (&units=metric) for Celsius
             fetch(
               `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=a210fd9e00bee0d760dcfd2fc1cb1ef5`
@@ -290,7 +283,6 @@ searchButton.addEventListener("click", () => {
               .then((response) => response.json())
               .then((weatherData) => {
                 let cityWeather = weatherData;
-                console.log("--------", cityWeather);
 
                 // #Create the DOM HERE
 
@@ -516,11 +508,11 @@ searchButton.addEventListener("click", () => {
                 cityInput.focus();
               })
               .catch((error) => {
-                console.error("Error Message second Fetch", error);
+                console.error("Error Message third Fetch", error);
               });
           })
           .catch((error) => {
-            console.error("Error Message", error);
+            console.error("Error Message second Fetch", error);
           });
 
         // ----- end fetch time
