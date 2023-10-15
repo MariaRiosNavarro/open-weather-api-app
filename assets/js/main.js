@@ -487,20 +487,3 @@ searchButton.addEventListener("click", () => {
       console.error("Error Message", error);
     });
 });
-
-// Stylehttps://sarcadass.github.io/granim.js/examples.html
-
-// let granimInstance = new Granim({
-//   element: "#canvas-basic",
-//   direction: "top-bottom",
-//   isPausedWhenNotInView: true,
-//   states: {
-//     "default-state": {
-//       gradients: [
-//         ["#ff9966", "#ff5e62"],
-//         ["#00F260", "#0575E6"],
-//         ["#e1eec3", "#f05053"],
-//       ],
-//     },
-//   },
-// });
