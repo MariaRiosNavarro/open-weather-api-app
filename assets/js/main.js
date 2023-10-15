@@ -1,4 +1,5 @@
 // import { countries } from "./countries.js";
+
 const countries = [
   { name: "Afghanistan", code: "AF" },
   { name: "Åland Islands", code: "AX" },
@@ -287,10 +288,12 @@ searchButton.addEventListener("click", () => {
             cardTitle.classList.add("card-title");
             const geoCoords = document.createElement("p");
             geoCoords.classList.add("card-coords");
+            const state = document.createElement("p");
 
             // appendChild
             cardHeader.appendChild(cardTitle);
             cardHeader.appendChild(geoCoords);
+            cardHeader.appendChild(state);
 
             // #card
 
@@ -427,6 +430,9 @@ searchButton.addEventListener("click", () => {
             // !!CONTENT
             cardTitle.textContent = city.name;
             geoCoords.textContent = `${lat.toFixed(2)}/${lon.toFixed(2)}`;
+            let countryState = city.state !== "" ? city.state : "";
+            state.textContent = countryState;
+
             temp.textContent = `${cityWeather.main.temp.toFixed(1)}°`;
             tempMin.textContent = `${cityWeather.main.temp_min.toFixed(1)}°`;
             separationSpan.textContent = "-";
@@ -435,6 +441,36 @@ searchButton.addEventListener("click", () => {
             cardCountry.textContent = countryName;
             const timestamp = cityWeather.dt;
             // time calculation
+
+            // ------------- Test
+
+            // const timezone = cityWeather.timezone;
+            // const dateLocal = new Date((timestamp + timezone) * 1000);
+            // const timeStamp = new Date(timezone);
+
+            // const timeH = timeStamp.getHours();
+            // const minSt = timeStamp.getMinutes();
+            // const localhours = dateLocal.getHours();
+            // const localminutes = dateLocal.getMinutes();
+
+            // const formattedTime2 = `${localhours}:${String(
+            //   localminutes
+            // ).padStart(2, "0")}`;
+            // console.log(`Hora en es:${city.name}`, formattedTime2);
+
+            // const formattedTime3 = `${timeH}:${String(minSt).padStart(2, "0")}`;
+            // console.log(`timezone en es:${city.name}`, formattedTime3);
+
+            const timezoneOffset = cityWeather.timezone; // Offset de la zona horaria en segundos
+
+            const formattedDateTest = DateTime.fromSeconds(
+              timestamp + timezoneOffset
+            )
+              .toLocal()
+              .toFormat("yyyy-MM-dd HH:mm:ss");
+
+            console.log(`La hora en ${city.name} es: ${formattedDateTest}`);
+            // ------------ ende test
             const localTime = new Date(timestamp * 1000);
             const hours = localTime.getHours();
             const minutes = localTime.getMinutes();
@@ -479,11 +515,11 @@ searchButton.addEventListener("click", () => {
             cityInput.focus();
           })
           .catch((error) => {
-            console.error("Error Message", error);
+            console.error("Error Message second Fetch", error);
           });
       });
     })
     .catch((error) => {
-      console.error("Error Message", error);
+      console.error("Error Message first Fetch", error);
     });
 });

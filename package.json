@@ -1,11 +1,11 @@
 {
   "name": "open-weather-api-app",
   "version": "1.0.0",
-  "description": "[deploymentGitPages](https://mariariosnavarro.github.io/open-weather-api-app/)",
+  "description": "Wearher App",
   "main": "config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Maria Rios Navarro",
   "license": "ISC"
 }
