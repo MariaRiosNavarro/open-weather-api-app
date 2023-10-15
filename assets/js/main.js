@@ -1,5 +1,3 @@
-// import { countries } from "./countries.js";
-
 const countries = [
   { name: "Afghanistan", code: "AF" },
   { name: "Åland Islands", code: "AX" },
@@ -243,18 +241,19 @@ const countries = [
   { name: "Zimbabw", code: "ZN" },
 ];
 
-// const myKey = process.env.API_KEY;
+//! MAIN CODE
 
-// const myKey = "a210fd9e00bee0d760dcfd2fc1cb1ef5";
-
+const firstAnimation = document.querySelector('[data-js="init-animation"]');
 const cityInput = document.querySelector('[data-js="city"]');
 const searchButton = document.querySelector('[data-js="search"]');
 const output = document.querySelector('[data-js="output"]');
 
-// let country = "DE";
+searchButton.addEventListener("click", () => {
+  firstAnimation.style.display = "none";
+});
 
 searchButton.addEventListener("click", () => {
-  // Fetch the Place (Default Germany)
+  // Fetch the Place
   fetch(
     `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput.value}&limit=5&appid=a210fd9e00bee0d760dcfd2fc1cb1ef5`
   )
@@ -503,8 +502,13 @@ searchButton.addEventListener("click", () => {
                 let windSpeedKMH = Math.ceil(windSpeedMS * 3.6);
                 windSpeedBlockSpan.textContent = `${windSpeedKMH} km/h`;
                 // ADD to main Output
-                output.appendChild(cardHeader);
-                output.appendChild(card);
+
+                const mainWrapper = document.createElement("div");
+                mainWrapper.classList.add("flex-column");
+                mainWrapper.appendChild(cardHeader);
+                mainWrapper.appendChild(card);
+
+                output.appendChild(mainWrapper);
 
                 //Remove old input & place the focus inside for the next search
 

@@ -94,6 +94,20 @@ main {
   font-weight: 900;
 }
 
+.output {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.flex-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 /* Card & card-header Styles */
 
 .card-header {
@@ -125,9 +139,11 @@ main {
   background-color: var(--lightcolor);
   padding: 1rem;
   border-radius: 50%;
-  height: 21rem;
-  width: 21rem;
+  height: 22rem;
+  width: 22rem;
   margin-bottom: 2rem;
+  animation: morph 5s linear infinite;
+  animation-delay: 0.5s;
 }
 /* -------------------------------UP */
 .subcard-up {
@@ -154,6 +170,8 @@ main {
   position: relative;
   top: -0.3rem;
   left: 1.4rem;
+  animation: morph 5s linear infinite;
+  animation-delay: 0.8s;
 }
 
 .card-temp {
@@ -187,6 +205,8 @@ main {
   position: relative;
   top: 2rem;
   left: 1.6rem;
+  animation: morph 5s linear infinite;
+  animation-delay: 0.5s;
 }
 
 .card-country {
@@ -220,9 +240,11 @@ main {
 .image-wrapper {
   width: 4.7rem;
   height: 4.7rem;
-  border-radius: 50%;
   overflow: hidden;
   position: relative;
+  animation: morph 5s linear infinite;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  animation-delay: 0.7s;
 }
 
 .image {
@@ -256,6 +278,8 @@ main {
   left: -0.5rem;
   width: 6.2rem;
   height: 6.2rem;
+  animation: morph 5s linear infinite;
+  animation-delay: 0.9s;
 }
 
 /* * ------------------------4 - bubble - humidity/clouds*/
@@ -266,6 +290,8 @@ main {
   left: 0rem;
   width: 5.5rem;
   height: 5.5rem;
+  animation: morph 5s linear infinite;
+  animation-delay: 2s;
 }
 
 /* * ------------------------5 - bubble - sunrise/sunset*/
@@ -276,6 +302,8 @@ main {
   left: 1.4rem;
   width: 5rem;
   height: 5rem;
+  animation: morph 5s linear infinite;
+  animation-delay: 3s;
 }
 
 .litle-wrapper h4 {
@@ -302,7 +330,7 @@ main {
   opacity: 0.8;
   border: 2px solid #66a9fc;
   position: relative;
-  border-radius: 50%;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
 }
 
 .drop::before {
@@ -310,10 +338,30 @@ main {
   position: absolute;
   height: 100%;
   width: 100%;
-  border-radius: 50%;
+  animation: morph 5s linear infinite;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
   box-shadow: -3px 7px 8px #3e84fb, -10px 10px 16px #4284f7,
     inset -3px 3px 10px #4788f9, inset 2px 6px 10px #3081e4,
     inset 5px -5px 5px rgb(245, 250, 251), inset 40px -40px 20px #8ebefe;
+}
+/* delay all drops, the same as the main wrapper */
+
+.drop-one::before {
+  animation-delay: 0.8s;
+}
+.drop-two::before {
+  animation-delay: 0.5s;
+}
+
+.drop-four::before {
+  animation-delay: 3s;
+}
+.drop-five::before {
+  animation-delay: 2s;
+}
+
+.drop-six::before {
+  animation-delay: 0.9s;
 }
 
 h2,
@@ -333,13 +381,23 @@ div {
 
 /* ANIMATIONS */
 
+.drop-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
 .drop-init {
   width: 100%;
   width: 230px;
   height: 230px;
   border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
   overflow: hidden;
-  animation: morph 3s linear infinite;
+  transition: all ease-in-out;
+  animation: morph 5s linear infinite;
   opacity: 0.8;
   border: 2px solid #66a9fc;
   box-shadow: -3px 7px 8px #3e84fb, -10px 10px 16px #4284f7,
@@ -347,9 +405,9 @@ div {
     inset 5px -5px 5px rgb(245, 250, 251), inset 40px -40px 20px #8ebefe;
 }
 
-/* .blub img {
-  width: 100%;
-} */
+.drop-init:last-of-type {
+  animation-delay: 1.5s;
+}
 
 @keyframes morph {
   0%,
@@ -361,5 +419,13 @@ div {
   }
   67% {
     border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .output {
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 2rem;
   }
 }
