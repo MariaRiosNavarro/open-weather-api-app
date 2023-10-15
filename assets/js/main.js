@@ -1,7 +1,7 @@
-import { api_key } from "/config.js";
+// import { api_key } from "/config.js";
 import { countries } from "/assets/db/countries.js";
 
-let myKey = api_key;
+const myKey = process.env.API_KEY;
 
 const cityInput = document.querySelector('[data-js="city"]');
 const searchButton = document.querySelector('[data-js="search"]');
