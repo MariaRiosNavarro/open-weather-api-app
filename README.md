@@ -2,6 +2,8 @@
 
 # Api: https://openweathermap.org
 
+# Api Local Time : https://ipgeolocation.io/
+
 Normally I would store the secret api_key in an .env file (.gitignore), but for deployment I would need a server. So as I use a free service key, it is not necessary for this repository. I mean, in this case the key is public. I also added this to the html
 
 ```
