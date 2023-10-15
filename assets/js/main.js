@@ -1,5 +1,4 @@
-// import { api_key } from "/config.js";
-import { countries } from "/assets/db/countries.js";
+import { countries } from "./countries.js";
 
 // const myKey = process.env.API_KEY;
 
