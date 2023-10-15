@@ -14,3 +14,25 @@ Normally I would store the secret api_key in an .env file (.gitignore), but for 
 ```
 
 to let me deploy. But normally you should NEVER make the KEYS public. I used this time the NETLIFY deployment
+
+# MOBILE
+
+<div>
+<img src="./assets/img/readme1.png" alt="img" width="250">
+<img src="./assets/img/readme2.png" alt="img" width="250">
+</div>
+
+# TABLET & SMALL SCREENS
+
+<div>
+<img src="./assets/img/readme3.png" alt="img" width="250">
+<img src="./assets/img/readme4.png" alt="img" width="250">
+<img src="./assets/img/readme5.png" alt="img" width="250">
+</div>
+
+# DESKTOP
+
+<div>
+<img src="./assets/img/readme6.png" alt="img" width="250">
+<img src="./assets/img/readme7.png" alt="img" width="250">
+</div>
