@@ -2,7 +2,7 @@
 
 # [NETLIFY deployment](https://main--cool-vacherin-47a2af.netlify.app/)
 
-# Api: https://openweathermap.org
+# Api Weather: https://openweathermap.org
 
 # Api Local Time : https://ipgeolocation.io/
 
