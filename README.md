@@ -1,3 +1,3 @@
 # open-weather-api-app
 
-[deploymentGitPages](https://mariariosnavarro.github.io/open-weather-api-app/)
+[NETLIFY deployment](https://main--cool-vacherin-47a2af.netlify.app/)
