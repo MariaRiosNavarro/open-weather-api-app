@@ -1,0 +1,12 @@
+{
+  "name": "open-weather-api-app",
+  "version": "1.0.0",
+  "description": "[deploymentGitPages](https://mariariosnavarro.github.io/open-weather-api-app/)",
+  "main": "config.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
