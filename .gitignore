@@ -1,4 +1,6 @@
+# dependencies
+/open-weather-api-app/node_modules
+
 config.js
 .env*.local
-# dependencies
-/node_modules
+
