@@ -269,6 +269,9 @@ searchButton.addEventListener("click", () => {
                 console.error("Error Message third Fetch", error);
               });
           })
+
+          // ----- end fetch weather
+
           .catch((error) => {
             console.error("Error Message second Fetch", error);
           });
@@ -279,4 +282,6 @@ searchButton.addEventListener("click", () => {
     .catch((error) => {
       console.error("Error Message first Fetch", error);
     });
+
+  // ----- end fetch location
 });
