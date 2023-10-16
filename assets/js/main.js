@@ -63,11 +63,11 @@ searchButton.addEventListener("click", () => {
                 const card = document.createElement("article");
                 card.classList.add("card");
 
-                // -1 Bubble (Weather)
+                // -A UP
                 const subcardUP = document.createElement("div");
                 subcardUP.classList.add("subcard-up");
 
-                // -1.1 Bubble (Weather Wrapper)
+                // -1 Bubble (Weather Wrapper)
                 const weatherWrapper = document.createElement("div");
                 weatherWrapper.classList.add(
                   "weather-wrapper",
@@ -92,7 +92,7 @@ searchButton.addEventListener("click", () => {
                 weatherWrapper.appendChild(description);
                 subcardUP.appendChild(weatherWrapper);
 
-                // -1.2 Bubble (Location & Time)
+                // -2 Bubble (Location & Time)
                 // Extract name of Country with the countries array
 
                 let countryName = "";
@@ -119,11 +119,11 @@ searchButton.addEventListener("click", () => {
                 subcardUP.appendChild(timeWrapper);
                 card.appendChild(subcardUP);
 
-                // -2 Bubble (Middle)
+                // -B-Middle
                 const subcardMiddle = document.createElement("div");
                 subcardMiddle.classList.add("subcard-middle");
 
-                // -2.1 Bubble (Image Wrapper)
+                // -3 Bubble (Image Wrapper)
                 const imageWrapper = document.createElement("div");
                 imageWrapper.classList.add("image-wrapper", "drop-three");
                 const cardIcon = document.createElement("img");
@@ -133,11 +133,11 @@ searchButton.addEventListener("click", () => {
                 subcardMiddle.appendChild(imageWrapper);
                 card.appendChild(subcardMiddle);
 
-                // -3 Bubble (Down)
+                // -C Down
                 const subcardDown = document.createElement("div");
                 subcardDown.classList.add("subcard-down");
 
-                // -3.1 Bubble (Sunrise & Sunset)
+                // -4 Bubble (Sunrise & Sunset)
                 const litleWrapperOne = document.createElement("div");
                 litleWrapperOne.classList.add(
                   "litle-wrapper",
@@ -158,7 +158,7 @@ searchButton.addEventListener("click", () => {
                 sunrise.appendChild(sunriseBlockSpan);
                 sunset.appendChild(sunsetBlockSpan);
 
-                // -3.2 Bubble (Clouds & Humidity)
+                // -5 Bubble (Clouds & Humidity)
                 const litleWrapperTwo = document.createElement("div");
                 litleWrapperTwo.classList.add(
                   "litle-wrapper",
@@ -179,7 +179,7 @@ searchButton.addEventListener("click", () => {
                 clouds.appendChild(cloudsBlockSpan);
                 humidity.appendChild(humidityBlockSpan);
 
-                // -3.3 Bubble (Pressure & Wind Speed)
+                // -6 Bubble (Pressure & Wind Speed)
                 const litleWrapperThree = document.createElement("div");
                 litleWrapperThree.classList.add(
                   "litle-wrapper",
@@ -226,40 +226,41 @@ searchButton.addEventListener("click", () => {
                 timeBlockSpan.textContent = localWithOutSeconds;
                 cardIcon.src = `https://openweathermap.org/img/wn/${cityWeather.weather[0].icon}@2x.png`;
 
-                // sunrise calculation
+                // --sunrise calculation
                 const sunriseData = cityWeather.sys.sunrise;
                 const sunriseTime = new Date(sunriseData * 1000);
                 const sunriseHours = sunriseTime.getHours();
                 const sunriseMinutes = sunriseTime.getMinutes();
                 const formattedSunrise = `${sunriseHours}:${String(
                   sunriseMinutes
-                ).padStart(2, "0")}`; //Allways 2 numbers in minutes
+                ).padStart(2, "0")}`;
                 sunriseBlockSpan.textContent = `${formattedSunrise}`;
-                // sunset calculation
+                // --sunset calculation
                 const sunsetData = cityWeather.sys.sunset;
                 const sunsetTime = new Date(sunsetData * 1000);
                 const sunsetHours = sunsetTime.getHours();
                 const sunsetMinutes = sunsetTime.getMinutes();
                 const formattedSunset = `${sunsetHours}:${String(
                   sunsetMinutes
-                ).padStart(2, "0")}`; //Allways 2 numbers in minutes
+                ).padStart(2, "0")}`;
                 sunsetBlockSpan.textContent = `${formattedSunset}`;
+                // ---
                 cloudsBlockSpan.textContent = `${cityWeather.clouds.all} %`;
                 humidityBlockSpan.textContent = `${cityWeather.main.humidity} %`;
                 pressureBlockSpan.textContent = `${cityWeather.main.pressure} hPa`;
                 let windSpeedMS = cityWeather.wind.speed;
                 let windSpeedKMH = Math.ceil(windSpeedMS * 3.6);
                 windSpeedBlockSpan.textContent = `${windSpeedKMH} km/h`;
-                // ADD to main Output
+
+                //- ADD to main Output
 
                 const mainWrapper = document.createElement("div");
                 mainWrapper.classList.add("flex-column");
                 mainWrapper.appendChild(cardHeader);
                 mainWrapper.appendChild(card);
-
                 output.appendChild(mainWrapper);
 
-                //Remove old input & place the focus inside for the next search
+                //Remove old input & place the focus inside for the next search. I do not remove the originating charts in case you want to compare climate between cities. Just reloading the page clears it.
 
                 cityInput.value = "";
                 cityInput.focus();
