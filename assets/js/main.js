@@ -1,5 +1,8 @@
 import { countries } from "../db/countries.js";
-import "dotenv/config";
+// const dotenv = require("dotenv");
+// dotenv.config();
+
+// import dotenv from "dotenv";
 
 const myKey = process.env.KEY;
 
