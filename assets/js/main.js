@@ -1,4 +1,9 @@
 import { countries } from "../db/countries.js";
+import "dotenv/config";
+
+const myKey = process.env.KEY;
+
+console.log(myKey);
 
 const firstAnimation = document.querySelector('[data-js="init-animation"]');
 const cityInput = document.querySelector('[data-js="city"]');
